@@ -1,9 +1,9 @@
 -- ClassExp database backup for Project 2
 -- MySQL-compatible schema and sample data.
--- Replace the database name below if your assigned database uses a different name.
-
-CREATE DATABASE IF NOT EXISTS class_exp;
-USE class_exp;
+-- Select your assigned database before importing this file.
+-- Local example: mysql -u root class_exp < db_backup_proj2.sql
+-- Importing replaces these eight project tables, including their existing data.
+SET NAMES utf8mb4;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -140,19 +140,21 @@ CREATE TABLE moderation_log (
         FOREIGN KEY (admin_id) REFERENCES users(user_id)
 ) ENGINE = InnoDB;
 
+-- Sample student login: alex.chen@example.edu / ClassExp360!
+-- Seed passwords are for demonstration accounts only.
 INSERT INTO users
     (user_id, first_name, last_name, email, password_hash, role, class_year)
 VALUES
-    (1, 'Alex', 'Chen', 'alex.chen@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'student', 2027),
-    (2, 'Jordan', 'Lee', 'jordan.lee@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'student', 2026),
-    (3, 'Morgan', 'Patel', 'morgan.patel@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'student', 2028),
-    (4, 'Taylor', 'Brooks', 'taylor.brooks@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'student', 2027),
-    (5, 'Riley', 'Nguyen', 'riley.nguyen@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'student', 2026),
-    (6, 'Emily', 'Smith', 'emily.smith@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'professor', NULL),
-    (7, 'Daniel', 'Johnson', 'daniel.johnson@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'professor', NULL),
-    (8, 'Sophia', 'Williams', 'sophia.williams@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'professor', NULL),
-    (9, 'Avery', 'Davis', 'avery.davis@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'admin', NULL),
-    (10, 'Casey', 'Wilson', 'casey.wilson@example.edu', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC9n1e4q8J3K4V5m2u', 'admin', NULL);
+    (1, 'Alex', 'Chen', 'alex.chen@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'student', 2027),
+    (2, 'Jordan', 'Lee', 'jordan.lee@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'student', 2026),
+    (3, 'Morgan', 'Patel', 'morgan.patel@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'student', 2028),
+    (4, 'Taylor', 'Brooks', 'taylor.brooks@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'student', 2027),
+    (5, 'Riley', 'Nguyen', 'riley.nguyen@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'student', 2026),
+    (6, 'Emily', 'Smith', 'emily.smith@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'professor', NULL),
+    (7, 'Daniel', 'Johnson', 'daniel.johnson@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'professor', NULL),
+    (8, 'Sophia', 'Williams', 'sophia.williams@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'professor', NULL),
+    (9, 'Avery', 'Davis', 'avery.davis@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'admin', NULL),
+    (10, 'Casey', 'Wilson', 'casey.wilson@example.edu', '$2y$12$Jar7kW7PwfsZt9LyTh4U9.esfDJLwr/jkf8U4Am0r671Zii90p0W6', 'admin', NULL);
 
 INSERT INTO courses
     (course_id, course_code, course_name, department, description)
@@ -181,28 +183,28 @@ VALUES
 INSERT INTO sections
     (section_id, course_id, term_id, section_number, schedule, room, professor_id)
 VALUES
-    (1, 1, 4, '01', 'MWF 9:00-9:50 AM', 'Science 101', 6),
-    (2, 2, 4, '01', 'TTh 10:00-11:20 AM', 'Science 202', 7),
-    (3, 3, 4, '01', 'MWF 11:00-11:50 AM', 'Science 105', 6),
-    (4, 4, 4, '01', 'TTh 1:00-2:20 PM', 'Science 110', 8),
-    (5, 5, 4, '01', 'MWF 1:00-1:50 PM', 'Glatfelter 201', 7),
-    (6, 6, 4, '01', 'TTh 2:30-3:50 PM', 'Glatfelter 105', 8),
-    (7, 7, 4, '01', 'MWF 2:00-2:50 PM', 'CUB 210', 8),
-    (8, 8, 4, '01', 'TTh 9:00-10:20 AM', 'Science 115', 7);
+    (1, 1, 2, '01', 'MWF 9:00-9:50 AM', 'Science 101', 6),
+    (2, 2, 2, '01', 'TTh 10:00-11:20 AM', 'Science 202', 7),
+    (3, 3, 2, '01', 'MWF 11:00-11:50 AM', 'Science 105', 6),
+    (4, 4, 2, '01', 'TTh 1:00-2:20 PM', 'Science 110', 8),
+    (5, 5, 2, '01', 'MWF 1:00-1:50 PM', 'Glatfelter 201', 7),
+    (6, 6, 2, '01', 'TTh 2:30-3:50 PM', 'Glatfelter 105', 8),
+    (7, 7, 2, '01', 'MWF 2:00-2:50 PM', 'CUB 210', 8),
+    (8, 8, 2, '01', 'TTh 9:00-10:20 AM', 'Science 115', 7);
 
 INSERT INTO enrollments
     (enrollment_id, student_id, section_id, status, completed_at)
 VALUES
-    (1, 1, 1, 'completed', '2026-12-11'),
-    (2, 2, 1, 'completed', '2026-12-11'),
-    (3, 3, 2, 'completed', '2026-12-11'),
-    (4, 4, 3, 'completed', '2026-12-11'),
-    (5, 5, 4, 'completed', '2026-12-11'),
-    (6, 1, 5, 'completed', '2026-12-11'),
-    (7, 2, 6, 'completed', '2026-12-11'),
-    (8, 3, 7, 'completed', '2026-12-11'),
-    (9, 4, 8, 'completed', '2026-12-11'),
-    (10, 5, 3, 'completed', '2026-12-11');
+    (1, 1, 1, 'completed', '2026-05-08'),
+    (2, 2, 1, 'completed', '2026-05-08'),
+    (3, 3, 2, 'completed', '2026-05-08'),
+    (4, 4, 3, 'completed', '2026-05-08'),
+    (5, 5, 4, 'completed', '2026-05-08'),
+    (6, 1, 5, 'completed', '2026-05-08'),
+    (7, 2, 6, 'completed', '2026-05-08'),
+    (8, 3, 7, 'completed', '2026-05-08'),
+    (9, 4, 8, 'completed', '2026-05-08'),
+    (10, 5, 3, 'completed', '2026-05-08');
 
 INSERT INTO student_evaluations
     (evaluation_id, student_id, section_id, teaching_clarity, workload_rating, grading_fairness, overall_rating, comment)
@@ -237,4 +239,8 @@ VALUES
     (4, 10, 'student', 4, 'hidden', 'Comment included content requiring administrator review.'),
     (5, 9, 'professor', 1, 'restored', 'Evaluation was reviewed and approved.'),
     (6, 10, 'professor', 2, 'hidden', 'Evaluation was temporarily hidden pending verification.'),
-    (7, 9, 'student', 5, 'deleted', 'Evaluation was removed at the author''s request.');
+    (7, 9, 'student', 5, 'hidden', 'Evaluation was hidden at the author''s request.');
+
+-- Keep the sample visibility flags consistent with the moderation history.
+UPDATE student_evaluations SET is_hidden=1 WHERE evaluation_id IN (2, 4, 5);
+UPDATE professor_evaluations SET is_hidden=1 WHERE evaluation_id=2;
