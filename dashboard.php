@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             unset($_SESSION['uid']);
             break;
     }
-    header('Location: dashboard_completed.php?op=' . ($op === 'logout' ? 'home' : 'student'));
+    header('Location: dashboard.php?op=' . ($op === 'logout' ? 'home' : 'student'));
     exit();
 }
 ?>

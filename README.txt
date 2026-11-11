@@ -13,7 +13,7 @@ What doesn't work:
 
 Comments:
 Landing page:
-https://cs.gettysburg.edu/~nguynh01/cs360/proj2/dashboard_completed.php?op=home
+https://cs.gettysburg.edu/~nguynh01/cs360/proj2/dashboard.php?op=home
 Main GitHub repository:
 https://github.com/anhducnguyen2006/cs360-project
 Instructor repository access: skimmn@gmail.com; owner must confirm access.
